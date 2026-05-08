@@ -48,6 +48,41 @@
       gtag('js', new Date());
       gtag('config', 'G-9W5JY5MBYN');
     </script>
+    <script>
+      async function checkDomainExpiry() {
+        const url = "https://www.rdap.net/domain/miletic.net";
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const expirationEvent = data.events.find(
+          e => e.eventAction === "expiration"
+        );
+
+        if (!expirationEvent) {
+          document.getElementById("result").textContent =
+            "Nije pronađen datum isteka domene";
+          return;
+        }
+
+        const expirationDate = new Date(expirationEvent.eventDate);
+        const now = new Date();
+
+        const diffMs = expirationDate - now;
+        const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+        const formattedDate = expirationDate.toLocaleDateString("hr-HR", {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        });
+
+        document.getElementById("domainExpiryResult").textContent =
+          `Domena istječe za ${diffDays} dana (dana ${formattedDate}).`;
+      }
+
+      checkDomainExpiry();
+    </script>
   </head>
   <body>
     <main class="min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -120,7 +155,7 @@
     </main>
     <hr>
     <footer class="m-4 text-center text-sm">
-      <p>&copy; Miletić, MMDCCLXVIII – MMDCCLXXVIII <a href="https://calendars.fandom.com/wiki/Ab_urbe_condita">a.u.c.</a> (2015 – 2025 A.D.) | Dizajn: <a href="https://tailwindui.com/">Tailwind UI</a>, ikone autora <a href="https://fontawesome.com/">Font Awesome</a> (<a href="https://builtwith.com/noc.miletic.net">i još toga</a>), <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fnoc.miletic.net%2Fhr%2F">valjani HTML5</a>. | Usluge poslužitelja: <a href="https://www.hetzner.com/">Hetznerov</a> <a href="https://youtu.be/pq7yyVX5C_I">AMD EPYC</a> koji pokreće <a href="https://archlinux.org/">Arch Linux</a> (<a href="https://www.urbandictionary.com/define.php?term=i%20use%20arch%20btw">usput, mi koristimo Arch</a>) i <a href="https://httpd.apache.org/">Apache</a> s <a href="https://www.openssl.org/">OpenSSL-om</a>, TLS (X.509, HTTPS) certifikat izdan od <a href="https://letsencrypt.org/">Let's Encrypta</a>, ocjena A+ na <a href="https://www.ssllabs.com/ssltest/analyze.html?d=apollon.miletic.net">SSL Server Testu</a>. | Domena: <a href="https://www.verisign.com/">Verisign</a> (<a href="https://rdap.verisign.com/net/v1/domain/miletic.net">poslužitelj registra</a>) i <a href="https://www.namesilo.com/">NameSilo</a> (<a href="https://www.namesilo.com/rdap/domain/miletic.net">poslužitelj zapisničara</a>), DNS operatera <a href="https://1984.hosting/">1984 Hostinga</a> (<a href="https://whois.domaintools.com/miletic.net">WHOIS</a>), omogućeni <a href="https://dnsviz.net/d/miletic.net/dnssec/">DNSSEC</a> i <a href="https://uid0.com/ip6dc/miletic.net">IPv6</a>. | Stanje listi blokiranja u stvarnom vremenu (RBL) za e-mail: <a href="https://multirbl.valli.org/lookup/apollon.miletic.net.html">domena</a>, <a href="https://multirbl.valli.org/lookup/5.75.138.100.html">adresa IP(v4)</a>, <a href="https://multirbl.valli.org/lookup/2a01%3A4f8%3Ac0c%3A1dc8%3A%3A2.html">adresa IPv6</a>. | Rangiranje: <a href="https://www.similarweb.com/website/miletic.net/">mrežno sjedište &#35;16074 u Hrvatskoj</a>. | Autoritet domene: <a href="https://ahrefs.com/website-authority-checker/?input=miletic.net">35 (Ahrefs)</a>, <a href="https://moz.com/domain-analysis?site=miletic.net">29 (Moz)</a>.</p>
+      <p>&copy; Miletić, MMDCCLXVIII – MMDCCLXXVIII <a href="https://calendars.fandom.com/wiki/Ab_urbe_condita">a.u.c.</a> (2015 – 2025 A.D.) | Dizajn: <a href="https://tailwindui.com/">Tailwind UI</a>, ikone autora <a href="https://fontawesome.com/">Font Awesome</a> (<a href="https://builtwith.com/noc.miletic.net">i još toga</a>), <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fnoc.miletic.net%2Fhr%2F">valjani HTML5</a>. | Usluge poslužitelja: <a href="https://www.hetzner.com/">Hetznerov</a> <a href="https://youtu.be/pq7yyVX5C_I">AMD EPYC</a> koji pokreće <a href="https://archlinux.org/">Arch Linux</a> (<a href="https://www.urbandictionary.com/define.php?term=i%20use%20arch%20btw">usput, mi koristimo Arch</a>) i <a href="https://httpd.apache.org/">Apache</a> s <a href="https://www.openssl.org/">OpenSSL-om</a>, TLS (X.509, HTTPS) certifikat izdan od <a href="https://letsencrypt.org/">Let's Encrypta</a>, ocjena A+ na <a href="https://www.ssllabs.com/ssltest/analyze.html?d=apollon.miletic.net">SSL Server Testu</a>. | Domena: <a href="https://www.verisign.com/">Verisign</a> (<a href="https://rdap.verisign.com/net/v1/domain/miletic.net">poslužitelj registra</a>) i <a href="https://www.namesilo.com/">NameSilo</a> (<a href="https://www.namesilo.com/rdap/domain/miletic.net">poslužitelj zapisničara</a>), DNS operatera <a href="https://1984.hosting/">1984 Hostinga</a> (<a href="https://whois.domaintools.com/miletic.net">WHOIS</a>), omogućeni <a href="https://dnsviz.net/d/miletic.net/dnssec/">DNSSEC</a> i <a href="https://uid0.com/ip6dc/miletic.net">IPv6</a>. | Stanje listi blokiranja u stvarnom vremenu (RBL) za e-mail: <a href="https://multirbl.valli.org/lookup/apollon.miletic.net.html">domena</a>, <a href="https://multirbl.valli.org/lookup/5.75.138.100.html">adresa IP(v4)</a>, <a href="https://multirbl.valli.org/lookup/2a01%3A4f8%3Ac0c%3A1dc8%3A%3A2.html">adresa IPv6</a>. | Rangiranje: <a href="https://www.similarweb.com/website/miletic.net/">mrežno sjedište &#35;16074 u Hrvatskoj</a>. | Autoritet domene: <a href="https://ahrefs.com/website-authority-checker/?input=miletic.net">35 (Ahrefs)</a>, <a href="https://moz.com/domain-analysis?site=miletic.net">29 (Moz)</a>. | <span id="domainExpiryResult">Dohvaćanje podataka o isteku domene...</span></p>
     </footer>
     <script async src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/js/fontawesome.min.js" crossorigin="anonymous"></script>
     <script async src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/js/brands.min.js" crossorigin="anonymous"></script>
